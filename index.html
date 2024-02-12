@@ -63,6 +63,12 @@
     height: 500px; /* Adjust based on your form's length */
     border: none;
   }
+  /* Countdown Widget Styles */
+  .countdown {
+    font-size: 1.5em;
+    margin: 20px 0;
+    color: #ff69b4;
+  }
 </style>
 </head>
 <body>
@@ -71,6 +77,9 @@
   <h2>Mark Your Calendar: Saturday, April 27th at 1PM 🎉</h2>
   
   <img src="https://www.dropbox.com/scl/fi/55bjuyi9salnprs043tqu/DALL-E-2024-02-10-22.56.57-a-beautifully-decorated-mermaid-themed-birthday-cake-with-vibrant-colors-and-intricate-details.-The-cake-should-feature-elements-like-scales-tails.webp?rlkey=5tu7j6nm9hs952srtcdninigd&raw=1" alt="Mermaid-themed birthday cake">
+  
+  <!-- Countdown Widget -->
+  <div id="countdown" class="countdown"></div>
   
   <h3>Bring Along:</h3>
   <ul>
@@ -86,12 +95,28 @@
 <div class="rsvp-form">
   <h3>RSVP Now</h3>
   <iframe src="https://nm5et45o4cz.typeform.com/to/JIXpOg58" frameborder="0" allowfullscreen></iframe>
-  <p>Can't wait to see you there!</p>
 </div>
 
 <footer>
   © 2024 Hugowebs All Rights Reserved.
 </footer>
+
+<script>
+  var countDownDate = new Date("April 27, 2024 13:00:00").getTime();
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown").innerHTML = "It's Party Time!";
+    }
+  }, 1000);
+</script>
 
 </body>
 </html>
